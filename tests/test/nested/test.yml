@@ -1,0 +1,5 @@
+greeting: Hello, $*(GREETINGS)!
+items:
+  - $*(ITEM1)
+  - $(ITEM2)
+  - $(ITEM3)

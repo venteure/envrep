@@ -1,0 +1,23 @@
+name: 'Environment Variable Replacer'
+description: 'Replace Values in YAML, JSON or any other files using environment variables.'
+inputs:
+  directory:
+    description: 'The directory to scan for YAML files.'
+    required: true
+  extensions:
+    description: 'The file extensions to scan for.'
+    required: false
+    default: 'yaml,yml,json,conf,hcl'
+runs:
+  using: 'composite'
+  steps:
+    - name: Run Action
+      env:
+        INPUT_DIRECTORY: ${{ inputs.directory }}
+        INPUT_EXTENSIONS: ${{ inputs.extensions }}
+      id: main
+      run: python ${{ github.action_path }}/envrep.py
+      shell: bash
+branding:
+  icon: 'refresh-cw'
+  color: 'blue'
